@@ -76,6 +76,3 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 - IMDb for providing the movie data.
 - Streamlit, Pandas, and Plotly for their powerful data visualization tools.
 
----
-
-Feel free to replace `yourusername` in the repository URL with your actual GitHub username and update the screenshots with actual images from your app. This README provides a comprehensive guide to your project, highlighting its features and usage.
