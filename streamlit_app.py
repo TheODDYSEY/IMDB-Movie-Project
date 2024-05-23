@@ -47,9 +47,9 @@ st.plotly_chart(fig)
 
 # Top Directors
 top_directors = data['Director'].value_counts()[:20]
-fig_bar = px.bar(top_directors, x=top_directors.index, y=top_directors.values, title='Top Directors')
-fig_bar.update_layout(autosize=False, width=800, height=800, xaxis_title="Director", yaxis_title="Count", bargap=0.2)
-st.plotly_chart(fig_bar)
+fig_pie = px.pie(top_directors, names=top_directors.index, values=top_directors.values, title='Top Directors')
+fig_pie.update_layout(autosize=False, width=800, height=800)
+st.plotly_chart(fig_pie)
 
 # Mean Rating per Director
 mean_rating_per_director = data.groupby('Director')['Rating'].mean().nlargest(20)
@@ -59,15 +59,15 @@ st.plotly_chart(fig_pie)
 
 # Mean Votes per Director
 mean_votes_per_director = data.groupby('Director')['Votes'].mean().nlargest(20)
-fig_bar = px.bar(mean_votes_per_director, x=mean_votes_per_director.index, y=mean_votes_per_director.values, title='Mean Votes per Director')
-fig_bar.update_layout(autosize=False, width=800, height=800, xaxis_title="Director", yaxis_title="Mean Votes", bargap=0.2)
-st.plotly_chart(fig_bar)
+fig_pie = px.pie(mean_votes_per_director, names=mean_votes_per_director.index, values=mean_votes_per_director.values, title='Mean Votes per Director')
+fig_pie.update_layout(autosize=False, width=800, height=800)
+st.plotly_chart(fig_pie)
 
 # Top Actors
 actors_dict = pd.Series([actor.strip() for actors in data['Cast'].dropna() for actor in actors.split(',')]).value_counts().head(20)
-fig_bar = px.bar(actors_dict, x=actors_dict.index, y=actors_dict.values, title='Top Actors by Movie Count')
-fig_bar.update_layout(autosize=False, width=800, height=800, xaxis_title="Actor", yaxis_title="Movie Count", bargap=0.2)
-st.plotly_chart(fig_bar)
+fig_pie = px.pie(actors_dict, names=actors_dict.index, values=actors_dict.values, title='Top Actors by Movie Count')
+fig_pie.update_layout(autosize=False, width=800, height=800)
+st.plotly_chart(fig_pie)
 
 # Movies by Year Distribution
 fig = px.histogram(data, x='Year', nbins=data['Year'].nunique(), title='Movies by Year Distribution')
