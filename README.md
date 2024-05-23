@@ -59,9 +59,9 @@ IMDb Movie Explorer is an interactive web application that allows users to explo
 
 ## Screenshots
 
-![Screenshot 1](screenshots/screenshot1.png)
-![Screenshot 2](screenshots/screenshot2.png)
-![Screenshot 3](screenshots/screenshot3.png)
+![Screenshot 1](/streamlit.png)
+![Screenshot 2](/streamlit2.png)
+![Screenshot 3](/streamlit3.png)
 
 ## Data Source
 
