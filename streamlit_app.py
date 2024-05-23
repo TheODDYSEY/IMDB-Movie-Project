@@ -36,38 +36,27 @@ st.plotly_chart(fig)
 
 # Top Directors
 top_directors = data['Director'].value_counts()[:20]
-fig_bar = px.bar(top_directors, x=top_directors.index, y=top_directors.values, title='Top Directors')
 fig_pie = px.pie(top_directors, names=top_directors.index, values=top_directors.values, title='Top Directors')
-col1, col2 = st.columns(2)
-col1.plotly_chart(fig_bar)
-col2.plotly_chart(fig_pie)
-st.write("")
+fig_pie.update_layout(autosize=False, width=800, height=800)
+st.plotly_chart(fig_pie)
 
 # Mean Rating per Director
 mean_rating_per_director = data.groupby('Director')['Rating'].mean().nlargest(20)
-fig_bar = px.bar(mean_rating_per_director, x=mean_rating_per_director.index, y=mean_rating_per_director.values, title='Mean Rating per Director')
 fig_pie = px.pie(mean_rating_per_director, names=mean_rating_per_director.index, values=mean_rating_per_director.values, title='Mean Rating per Director')
-col1, col2 = st.columns(2)
-col1.plotly_chart(fig_bar)
-col2.plotly_chart(fig_pie)
-st.write("")
+fig_pie.update_layout(autosize=False, width=800, height=800)
+st.plotly_chart(fig_pie)
 
 # Mean Votes per Director
 mean_votes_per_director = data.groupby('Director')['Votes'].mean().nlargest(20)
-fig_bar = px.bar(mean_votes_per_director, x=mean_votes_per_director.index, y=mean_votes_per_director.values, title='Mean Votes per Director')
 fig_pie = px.pie(mean_votes_per_director, names=mean_votes_per_director.index, values=mean_votes_per_director.values, title='Mean Votes per Director')
-col1, col2 = st.columns(2)
-col1.plotly_chart(fig_bar)
-col2.plotly_chart(fig_pie)
-st.write("")
+fig_pie.update_layout(autosize=False, width=800, height=800)
+st.plotly_chart(fig_pie)
 
 # Top Actors
 actors_dict = pd.Series([actor.strip() for actors in data['Cast'].dropna() for actor in actors.split(',')]).value_counts().head(20)
-fig_bar = px.bar(actors_dict, x=actors_dict.index, y=actors_dict.values, title='Top Actors by Movie Count')
 fig_pie = px.pie(actors_dict, names=actors_dict.index, values=actors_dict.values, title='Top Actors by Movie Count')
-col1, col2 = st.columns(2)
-col1.plotly_chart(fig_bar)
-col2.plotly_chart(fig_pie)
+fig_pie.update_layout(autosize=False, width=800, height=800)
+st.plotly_chart(fig_pie)
 
 # Movies by Year Distribution
 fig = px.histogram(data, x='Year', nbins=data['Year'].nunique(), title='Movies by Year Distribution')
