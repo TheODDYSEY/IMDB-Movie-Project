@@ -43,6 +43,7 @@ st.dataframe(filtered_data)
 
 # Interactive visualization with Plotly
 fig = px.histogram(filtered_data, x='Rating', nbins=50, title=f'Rating Distribution for Filtered Movies')
+fig.update_layout(autosize=False, width=1200, height=800, margin=dict(l=50, r=50, b=100, t=100, pad=4))
 st.plotly_chart(fig)
 
 # Top Directors
