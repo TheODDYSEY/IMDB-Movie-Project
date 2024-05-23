@@ -16,7 +16,14 @@ actor_options = sorted(set(actor.strip() for actors in data['Cast'].dropna() for
 selected_director = st.sidebar.selectbox('Select a Director:', ['All'] + director_options)
 selected_year = st.sidebar.selectbox('Select a Year:', ['All'] + year_options)
 selected_actor = st.sidebar.selectbox('Select an Actor:', ['All'] + actor_options)
-
+with st.sidebar.expander('About', expanded=True):
+    st.write('''
+        - Data: [IMDb Movie Data](https://www.kaggle.com/datasets/kianindeed/imdb-movie-dataset-dec-2023).
+        - **Top Directors**: Directors with the most movies.
+        - **Mean Rating per Director**: Average movie rating for directors.
+        - **Top Actors**: Actors who have appeared in the most movies.
+        - **Movies by Year Distribution**: Distribution of movies over the years.
+    ''')
 # Filter the DataFrame based on the selected director, year, and actor
 filtered_data = data.copy()
 if selected_director != 'All':
@@ -29,6 +36,7 @@ if selected_actor != 'All':
 # Display the filtered DataFrame
 st.subheader(f'Movies Filtered by Director: {selected_director}, Year: {selected_year}, Actor: {selected_actor}')
 st.dataframe(filtered_data)
+
 
 # Interactive visualization with Plotly
 fig = px.histogram(filtered_data, x='Rating', nbins=50, title=f'Rating Distribution for Filtered Movies')
